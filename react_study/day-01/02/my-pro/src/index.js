@@ -399,6 +399,8 @@ import Hello from './Hello'
        return(
          <div>
            <h1>计数器:{this.state.count}</h1>
+           {/* // 箭头函数中的this指向外部环境，此处为：render()方法 
+           render() 方法中的 this 为组件实例，可以获取到 setState()*/}
            <button onClick={()=>this.onIncrement()}>+1</button>
    
          </div>
