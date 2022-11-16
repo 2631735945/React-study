@@ -382,7 +382,7 @@ import Hello from './Hello'
   //  render() 方法中的 this 为组件实例，可以获取到 setState()
   class App extends React.Component{
 
- 
+
     state={
       count:10
     }
@@ -408,3 +408,7 @@ import Hello from './Hello'
      }
    }
    ReactDOM.render(<App/>,document.getElementById("root"))
+
+//    2. Function.prototype.bind()
+//  利用ES5中的bind方法，将事件处理程序中的this与组件实例绑定到一起
+windows
