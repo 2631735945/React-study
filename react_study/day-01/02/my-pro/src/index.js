@@ -3,6 +3,8 @@ import ReactDOM, { render } from 'react-dom'
 
 // 引入CSS
 import './index.css'
+
+import PropTypes from 'prop-types'
 import Hello from './Hello'
 
 
@@ -1084,21 +1086,48 @@ ReactDOM.render(<App>我是子节点</App>, document.getElementById('root')) */
 //    )
 
 
+// const App = props => {
+//   console.log(props)
+//   props.children()
+//   return (
+//     <div>
+//       <h1>组件标签的子节点：</h1>
+//       {/* {props.children} */}
+//     </div>
+//   )
+// }
+// ReactDOM.render(
+// <App>
+//  {
+//   ()=>console.log("这是一个函数子节点")
+//  }
+//   </App>,
+//    document.getElementById('root')
+  //  )
+//    5.2 props 校验
+// 使用步骤
+// 1. 安装包 prop-types （yarn add prop-types / npm install prop-types）2. 导入 prop-types 包
+// 3. 使用组件名.propTypes = {} 来给组件的props添加校验规则
+// 4. 校验规则通过 PropTypes 对象来指定
 const App = props => {
-  console.log(props)
-  props.children()
-  return (
-    <div>
-      <h1>组件标签的子节点：</h1>
-      {/* {props.children} */}
-    </div>
-  )
+  const arr = props.colors
+  const lis = arr.map((item, index) => <li key={index}>{item}</li>)
+
+  return <ul>{lis}</ul>
 }
+
+// 添加props校验
+App.propTypes = {
+  colors: PropTypes.array
+}
+
 ReactDOM.render(
-<App>
- {
-  ()=>console.log("这是一个函数子节点")
- }
-  </App>,
-   document.getElementById('root')
-   )
+  <App colors={['red', 'blue']} />,
+  document.getElementById('root')
+)
+
+// 约束规则
+// 1. 常见类型：array、bool、func、number、object、string
+// 2. React元素类型：element
+// 3. 必填项：isRequired
+// 4. 特定结构的对象：shape({ })
